@@ -25,7 +25,7 @@ def odd_even():
 
         except ValueError as e: #exceção para inputs não inteiros
             print('-'*30)
-            print(f'>>>>>>Não foi digitado um número inteiro. Erro: {e}')
+            print(f'>>>>>>Não foi digitado um número inteiro. ERROR: {e}')
             print('-'*30)
 
 """
@@ -67,7 +67,7 @@ def hour_day():
 
         except ValueError as e: # exceção para caso não seja digitado um número inteiro.
             print('-'*30)
-            print(f'>>>>>>Não digitou um número inteiro. Erro: {e}')
+            print(f'>>>>>>Não digitou um número inteiro. ERROR: {e}')
             print('-'*30)
 
 """
@@ -76,22 +76,29 @@ menos escreva "Seu nome é curto"; se tiver entre 5 e 6 letras, escreva
 "Seu nome é normal"; maior que 6 escreva "Seu nome é muito grande". 
 """
 def name_len():
-        print('-'*30)
-        input_user = input('Digite seu nome: ') #input do usuário
-        print('-'*30)
+        while True: #laço para caso não seja digitado uma letra do alfabeto no input
+            print('-'*30)
+            input_user = input('Digite seu nome: ') #input do usuário
+            print('-'*30)
+            if input_user.isalpha(): #validação para letras do alfabeto
+                #condicionais para implementar diferentes respostas ao usuário
+                if len(input_user) > 0 and len(input_user) <= 4:
+                    print('-'*30)
+                    print('Seu nome é curto.')
+                    print('-'*30)
+                    break
 
-        #condicionais para implementar diferentes respostas ao usuário
-        if len(input_user) > 0 and len(input_user) <= 4:
-            print('-'*30)
-            print('seu nome é curto.')
-            print('-'*30)
+                elif len(input_user) >= 5 and len(input_user) <= 6:
+                    print('-'*30)
+                    print('Seu nome é normal.')
+                    print('-'*30)
+                    break
+                    
+                elif len(input_user) > 6:
+                    print('-'*30)
+                    print('Seu nome é muito grande.')
+                    print('-'*30)
+                    break
 
-        elif len(input_user) >= 5 and len(input_user) <= 6:
-            print('-'*30)
-            print('seu nome é normal.')
-            print('-'*30)
-
-        elif len(input_user) > 6:
-            print('-'*30)
-            print('seu nome é muito grande.')
-            print('-'*30)
+            else:
+                print('ERROR. Digite apenas letras do alfabeto!')
